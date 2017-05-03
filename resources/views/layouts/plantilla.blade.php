@@ -29,9 +29,8 @@
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-purple layout-top-nav">
 <div class="wrapper">
-
     <header class="main-header">
-        <nav class="navbar navbar-static-top">
+        <nav class="navbar navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <a href="{{url('/')}}" class="navbar-brand"><b>Trabaja en </b>Puertos</a>
