@@ -139,8 +139,8 @@
                 $('#tieneBrevete').hide();
             }
         });
-        $('#guardar').click(function () {
-
+        $('#guardar').click(function (event) {
+            event.preventDefault();
             console.log('hola');
             var datos = {
                 'ApellidoPaterno'      : $('#ApellidoPaterno').val(),
@@ -164,7 +164,12 @@
                     alert('Adicionado correctamente');
                 },
                 error: function (data) {
-                    console.log(data[0]);
+//                    console.log(data.responseJSON.ApellidoPaterno);
+                    $.each(data.responseJSON, function (i, item) {
+                        if(i === 'ApellidoPaterno'){
+                            $('#ApellidoPaterno').parent('div').addClass('has-error');
+                        }
+                    });
                 }
             });
         });
