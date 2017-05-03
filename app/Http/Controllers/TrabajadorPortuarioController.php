@@ -56,6 +56,14 @@ class TrabajadorPortuarioController extends Controller
             'TipoRegimenPensionar'      => '',
             'IndicadorTieneBrevete'     => '',
         ]);
+
+        $portuario = new TrabajadorPortuario();
+        $portuario->ApellidoPaterno = $request->ApellidoPaterno;
+        $portuario->ApellidoMaterno = $request->ApellidoMaterno;
+        $portuario->Nombre          = $request->Nombre;
+        $portuario->Tax             = $request->Tax;
+//        $portuario->EstadoCivil     =
+
     }
 
     /**

@@ -35,11 +35,11 @@
                             {{Form::label('TipoDocIdentidad','Tipo documento de identidad:',['class' => 'control-label col-md-4'])}}
                             <div class="col-md-8">
                                 {{Form::select('TipoDocIdentidad',[
-                                    '0' => 'DNI (Documento nacional de identidad)',
-                                    '1' => 'LM (Libreta militar)',
-                                    '2' => 'Bol (Boleta Militar)',
-                                    '3' => 'CE (Carnet de Extranjería)'
-                                ],'0',['class' => 'form-control'])}}
+                                    'DNI' => 'DNI (Documento nacional de identidad)',
+                                    'LM' => 'LM (Libreta militar)',
+                                    'Bol' => 'Bol (Boleta Militar)',
+                                    'CE' => 'CE (Carnet de Extranjería)'
+                                ],'DNI',['class' => 'form-control'])}}
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             {{Form::label('EstadoCivil','Estado civil',['class' => 'control-label col-md-4'])}}
                             <div class="col-md-8">
-                                {{Form::select('EstadoCivil',['Soltero','Casado','Divorciado'],0,['class' => 'form-control'])}}
+                                {{Form::select('EstadoCivil',['Soltero' => 'Soltero','Casado' => 'Casado','Divorciado' => 'Divorciado'],'Soltero',['class' => 'form-control'])}}
                             </div>
                         </div>
                         <div class="form-group">
@@ -95,15 +95,16 @@
                                 {{Form::label('ClaseBrevete','Clase de brevete:',['class' => 'control-label col-md-4'])}}
                                 <div class="col-md-8">
                                     {{Form::select('ClaseBrevete',[
-                                        'Clase A',
-                                        'Clase B',
-                                        'Clase C',
-                                        'Clase D',
-                                        'Clase E',
-                                        'Clase F',
-                                        'Clase G',
-                                        'Clase I'
-                                    ], 0,['class' => 'form-control'])}}
+                                        'Clase A' => 'Clase A',
+                                        'Clase B' => 'Clase B',
+                                        'Clase C' => 'Clase C',
+                                        'Clase D' => 'Clase D',
+                                        'Clase E' => 'Clase E',
+                                        'Clase F' => 'Clase F',
+                                        'Clase G' => 'Clase G',
+                                        'Clase H' => 'Clase H',
+                                        'Clase I' => 'Clase I'
+                                    ], 'Clase A',['class' => 'form-control'])}}
                                 </div>
                             </div>
                             <div class="form-group">

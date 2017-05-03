@@ -49,3 +49,19 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## Instalar las dependfendencias
+
+Para eso es necesario escribir lo siguiente:
+
+composer install
+
+luego hay que modificar el archivo .env para tener los datos de la base de datos
+también el siguiente comando para la base de datos
+
+php artisan migrate
+php artisan bd:seed
+
+el usuario principal el administrador@correo.web
+y la clave por defecto es 123456
+
