@@ -65,3 +65,5 @@ php artisan bd:seed
 el usuario principal el administrador@correo.web
 y la clave por defecto es 123456
 
+podemos cambier esto en el seeder del archivo
+
