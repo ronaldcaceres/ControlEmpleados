@@ -12,7 +12,7 @@
             <div class="box-body">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    {{Form::open(['class' => 'form-horizontal', 'url' => url('portuario')])}}
+                    {{Form::open(['class' => 'form-horizontal', 'url' => url('portuario'), 'id' => 'formularioPortuario'])}}
                         <div class="form-group">
                             {{Form::label('ApellidoPaterno','Apellido paterno:',['class' => 'control-label col-md-4'])}}
                             <div class="col-md-8">
@@ -95,6 +95,7 @@
                                 {{Form::label('ClaseBrevete','Clase de brevete:',['class' => 'control-label col-md-4'])}}
                                 <div class="col-md-8">
                                     {{Form::select('ClaseBrevete',[
+                                         0        => 'Seleccione..',
                                         'Clase A' => 'Clase A',
                                         'Clase B' => 'Clase B',
                                         'Clase C' => 'Clase C',
@@ -115,7 +116,7 @@
                             </div>
                         </div>
                     <div class=" text-center ">
-                        <button type="submit" class="btn btn-success"><span class="fa fa-check"></span> Enviar</button>
+                        <button type="submit" class="btn btn-success" id="guardar"><span class="fa fa-check"></span> Enviar</button>
                         <a href="{{url('portuario')}}" class="btn btn-warning"><span class="fa fa-times"></span> Cancelar</a>
                     </div>
                     {{Form::close()}}
@@ -133,8 +134,39 @@
             if($(this).is(':checked') ) {
                 $('#tieneBrevete').show();
             } else {
+                $('#ClaseBrevete').val(0);
+                $('#NroLicenciaBrevete').val(null);
                 $('#tieneBrevete').hide();
             }
+        });
+        $('#guardar').click(function () {
+
+            console.log('hola');
+            var datos = {
+                'ApellidoPaterno'      : $('#ApellidoPaterno').val(),
+                'ApellidoMaterno'      : $('#ApellidoMaterno').val(),
+                'Nombre'               : $('#Nombre').val(),
+                'TipoDocIdentidad'     : $('#TipoDocIdentidad').val(),
+                'NroDocIdentidad'      : $('#NroDocIdentidad').val(),
+                'EstadoCivil'          : $('#EstadoCivil').val(),
+                'Tax'                  : $('#Tax').val(),
+                'TipoRegimenPensionar' : $('#TipoRegimenPensionar').val(),
+                'NroCelular'           : $('#NroCelular').val(),
+                'TelefonoAdicional1'   : $('#TelefonoAdicional1').val(),
+                'TelefonoAdicional2'   : $('#TelefonoAdicional2').val(),
+                '_token'               : '{{csrf_token()}}'
+            };
+            $.ajax({
+                type: 'post',
+                url: '{{route("portuario.store")}}',
+                data: datos,
+                succes : function (data) {
+                    alert('Adicionado correctamente');
+                },
+                error: function (data) {
+                    console.log(data[0]);
+                }
+            });
         });
     });
 </script>

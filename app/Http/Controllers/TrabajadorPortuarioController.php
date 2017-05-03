@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\trabajadorPortuario;
+use Illuminate\Support\Facades\Auth;
 
 class TrabajadorPortuarioController extends Controller
 {
@@ -36,7 +38,6 @@ class TrabajadorPortuarioController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $this->validate($request, [
             'ApellidoPaterno'	        =>	'required',
             'ApellidoMaterno'	        =>	'required',
@@ -62,8 +63,17 @@ class TrabajadorPortuarioController extends Controller
         $portuario->ApellidoMaterno = $request->ApellidoMaterno;
         $portuario->Nombre          = $request->Nombre;
         $portuario->Tax             = $request->Tax;
-//        $portuario->EstadoCivil     =
+        $portuario->EstadoCivil     = $request->EstadoCivil;
+        $portuario->Tax             = $request->Tax;
+        $portuario->TipoRegimenPensionar = $request->TipoRegimenPensionar;
+        $portuario->NroCelular      = $request->NroCelular;
+        $portuario->TelefonoAdicional1 = $request->TelefonoAdicional1;
+        $portuario->TelefonoAdicional2 = $request->TelefonoAdicional2;
 
+        $portuario->UsuarioCreacion = Auth::user()->id;
+        $portuario->FechaCreacion   = Carbon::now();
+        $portuario->UsuarioActualizacion = Auth::user()->id;
+        $portuario->FechaActualizacion   = Carbon::now();
     }
 
     /**
