@@ -22,7 +22,7 @@ class CrearTablaTrabajadorPortuario extends Migration
             $table->string('ClaseBrevete',10)->nullable();
             $table->string('EstadoCivil',10);
             $table->date('FechaNacimiento');
-            $table->date('FechaRevalidacionBrevete');
+            $table->date('FechaRevalidacionBrevete')->nullable();
             $table->boolean('IndicadorTieneBrevete');
             $table->string('NroCelular',50);
             $table->integer('TipoDocIdentidad');

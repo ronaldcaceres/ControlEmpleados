@@ -69,8 +69,8 @@ class TrabajadorPortuarioController extends Controller
         $portuario->TelefonoAdicional1 = $request->TelefonoAdicional1;
         $portuario->TelefonoAdicional2 = $request->TelefonoAdicional2;
         $portuario->Sexo = $request->Sexo;
-        $portuario->FechaNacimiento = $request->FechaNacimiento;
-        $portuario->FechaRevalidacionBrevete = $request->FechaRevalidacionBrevete;
+        $portuario->FechaNacimiento = new Carbon($request->FechaNacimiento);
+        $portuario->FechaRevalidacionBrevete = new Carbon($request->FechaRevalidacionBrevete);
         $portuario->IndicadorTieneBrevete = $request->IndicadorTieneBrevete;
         $portuario->TipoDocIdentidad = $request->TipoDocIdentidad;
         $portuario->NroDocIdentidad = $request->NroDocIdentidad;
@@ -80,13 +80,14 @@ class TrabajadorPortuarioController extends Controller
             $portuario->NroLicenciaBrevete = $request->NroLicenciaBrevete;
             $portuario->FechaRevalidacionBrevete = $request->FechaRevalidacionBrevete;
         }
-
+        $portuario->Activo = true;
         $portuario->UsuarioCreacion = Auth::user()->id;
         $portuario->FechaCreacion   = Carbon::now();
         $portuario->UsuarioActualizacion = Auth::user()->id;
         $portuario->FechaActualizacion   = Carbon::now();
 
         $portuario->save();
+        return response()->json(['msj' => 'Datos Guardados Satisfactoriamente'], 200);
     }
 
     /**

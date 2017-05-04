@@ -7,8 +7,8 @@
 
 @section('contenido')
     <section class="content">
-        <div class="box">
-            <div class="box-header bg-light-blue-gradient">
+        <div class="box box-solid">
+            <div class="box-header bg-light-blue-gradient " id="titulo">
                 <div class="box-title">
                     Nuevo registro de trabajador portuario
                 </div>
@@ -16,6 +16,7 @@
             <div class="box-body">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
+                    <div class="alert" hidden id="alerta"></div>
                     {{Form::open(['class' => 'form-horizontal', 'url' => url('portuario'), 'id' => 'formularioPortuario'])}}
                         <div class="form-group">
                             {{Form::label('ApellidoPaterno','Apellido paterno:',['class' => 'control-label col-md-4'])}}
@@ -167,7 +168,6 @@
         });
         $('#guardar').click(function (event) {
             event.preventDefault();
-            console.log('hola');
             var datos = {
                 'ApellidoPaterno'      : $('#ApellidoPaterno').val(),
                 'ApellidoMaterno'      : $('#ApellidoMaterno').val(),
@@ -191,14 +191,33 @@
                 type: 'post',
                 url: '{{route("portuario.store")}}',
                 data: datos,
-                succes : function (data) {
-                    alert('Adicionado correctamente');
+                success : function (data) {
+                    alert(data.msj);
                 },
                 error: function (data) {
+                    var mensaje = '<ul>';
                     $.each(data.responseJSON, function (i, item) {
                         var idRemplazar = i;
                         $('#'+idRemplazar).parent('div').addClass('has-error');
+                        mensaje = mensaje+ '<li>' + item +'</li>';
                     });
+                    mensaje = mensaje + '</ul>';
+                    alerta = $('#alerta');
+                    alerta.html(mensaje);
+                    alerta.addClass('alert-danger');
+                    alerta.slideDown('slow');
+                    $('#titulo').removeClass(' bg-light-blue-gradient');
+                    $('#titulo').addClass('bg-red-gradient');
+                    setTimeout(function () {
+                        $.each(data.responseJSON, function (i, item) {
+                            var idRemplazar = i;
+                            $('#'+idRemplazar).parent('div').removeClass('has-error');
+                        });
+                        $('#alerta').removeClass('alert-danger');
+                        $('#alerta').slideUp('slow');
+                        $('#titulo').removeClass('bg-red-gradient');
+                        $('#titulo').addClass('bg-light-blue-gradient');
+                    },3000);
                 }
             });
         });
