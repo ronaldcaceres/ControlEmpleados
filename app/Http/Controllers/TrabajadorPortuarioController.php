@@ -45,35 +45,48 @@ class TrabajadorPortuarioController extends Controller
             'Tax'				        =>	'required',
             'ClaseBrevete'		        =>  '',
             'EstadoCivil'		        =>	'',
-            'FechaNacimiento'	        =>	'',
+            'FechaNacimiento'	        =>	'required',
             'FechaRevalidacionBrevete'	=>	'',
-            'NroCelular'		        => '',
-            'TipoDocIdentidad'	        => '',
-            'NroDocIdentidad'	        => '',
-            'NroLicenciaBrevete'        => '',
-            'TelefonoAdicional1'        => '',
-            'TelefonoAdicional2'        => '',
-            'Sexo'				        => '',
-            'TipoRegimenPensionar'      => '',
-            'IndicadorTieneBrevete'     => '',
+            'NroCelular'		        =>  'required',
+            'TipoDocIdentidad'	        =>  '',
+            'NroDocIdentidad'	        =>  'required',
+            'NroLicenciaBrevete'        =>  '',
+            'TelefonoAdicional1'        =>  '',
+            'TelefonoAdicional2'        =>  '',
+            'Sexo'				        =>  '',
+            'TipoRegimenPensionar'      =>  'required',
+            'IndicadorTieneBrevete'     =>  '',
         ]);
 
         $portuario = new TrabajadorPortuario();
         $portuario->ApellidoPaterno = $request->ApellidoPaterno;
         $portuario->ApellidoMaterno = $request->ApellidoMaterno;
-        $portuario->Nombre          = $request->Nombre;
-        $portuario->Tax             = $request->Tax;
-        $portuario->EstadoCivil     = $request->EstadoCivil;
-        $portuario->Tax             = $request->Tax;
+        $portuario->Nombre = $request->Nombre;
+        $portuario->Tax = $request->Tax;
+        $portuario->EstadoCivil = $request->EstadoCivil;
         $portuario->TipoRegimenPensionar = $request->TipoRegimenPensionar;
-        $portuario->NroCelular      = $request->NroCelular;
+        $portuario->NroCelular = $request->NroCelular;
         $portuario->TelefonoAdicional1 = $request->TelefonoAdicional1;
         $portuario->TelefonoAdicional2 = $request->TelefonoAdicional2;
+        $portuario->Sexo = $request->Sexo;
+        $portuario->FechaNacimiento = $request->FechaNacimiento;
+        $portuario->FechaRevalidacionBrevete = $request->FechaRevalidacionBrevete;
+        $portuario->IndicadorTieneBrevete = $request->IndicadorTieneBrevete;
+        $portuario->TipoDocIdentidad = $request->TipoDocIdentidad;
+        $portuario->NroDocIdentidad = $request->NroDocIdentidad;
+
+        if($portuario->IndicadorTieneBrevete){
+            $portuario->ClaseBrevete = $request->ClaseBrevete;
+            $portuario->NroLicenciaBrevete = $request->NroLicenciaBrevete;
+            $portuario->FechaRevalidacionBrevete = $request->FechaRevalidacionBrevete;
+        }
 
         $portuario->UsuarioCreacion = Auth::user()->id;
         $portuario->FechaCreacion   = Carbon::now();
         $portuario->UsuarioActualizacion = Auth::user()->id;
         $portuario->FechaActualizacion   = Carbon::now();
+
+        $portuario->save();
     }
 
     /**

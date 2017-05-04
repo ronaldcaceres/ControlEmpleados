@@ -1,6 +1,10 @@
 @extends('layouts.plantilla')
 {{--//portuario/create--}}
 
+@section('cabecera')
+<link rel="stylesheet" href="{{asset('/datepicker/datepicker3.css')}}">
+@endsection
+
 @section('contenido')
     <section class="content">
         <div class="box">
@@ -29,6 +33,21 @@
                             {{Form::label('Nombre','Nombre:',['class' => 'control-label col-md-4'])}}
                             <div class="col-md-8">
                                 {{Form::text('Nombre',null,['class' => 'form-control'])}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                {{Form::label('FechaNacimiento', 'Fecha de nacimiento:',['class' => 'control-label col-md-4'])}}
+                                <div class="col-md-8">
+                                    {{Form::text('FechaNacimiento',\Carbon\Carbon::now(),['class' => 'form-control pull-rigth'])}}
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            {{Form::label('Sexo','Sexo:',['class' => 'control-label col-md-4'])}}
+                            <div class="col-md-8">
+                                {{Form::select('Sexo',[
+                                    'Femenino' => 'Femenino',
+                                    'Masculino' => 'Masculino'
+                                ],'Masculino',['class' => 'form-control'])}}
                             </div>
                         </div>
                         <div class="form-group">
@@ -95,7 +114,6 @@
                                 {{Form::label('ClaseBrevete','Clase de brevete:',['class' => 'control-label col-md-4'])}}
                                 <div class="col-md-8">
                                     {{Form::select('ClaseBrevete',[
-                                         0        => 'Seleccione..',
                                         'Clase A' => 'Clase A',
                                         'Clase B' => 'Clase B',
                                         'Clase C' => 'Clase C',
@@ -114,8 +132,14 @@
                                     {{Form::text('NroLicenciaBrevete',null,['class' => 'form-control'])}}
                                 </div>
                             </div>
+                            <div class="form-group">
+                                {{Form::label('FechaRevalidacoinBrevete', 'Fecha de revalidación del brevete:',['class' => 'control-label col-md-4'])}}
+                                <div class="col-md-8">
+                                    {{Form::text('FechaRevalidacionBrevete',\Carbon\Carbon::now(),['class' => 'form-control pull-rigth', 'id' => 'datepicker'])}}
+                                </div>
+                            </div>
                         </div>
-                    <div class=" text-center ">
+                    <div class=" text-center">
                         <button type="submit" class="btn btn-success" id="guardar"><span class="fa fa-check"></span> Enviar</button>
                         <a href="{{url('portuario')}}" class="btn btn-warning"><span class="fa fa-times"></span> Cancelar</a>
                     </div>
@@ -128,13 +152,15 @@
 @endsection
 
 @section('script')
+<!-- DatePicker -->
+<script src="{{asset('datepicker/bootstrap-datepicker.js')}}"></script>
 <script>
     $(document).ready(function() {
         $('#IndicadorTieneBrevete').on('change', function() {
             if($(this).is(':checked') ) {
                 $('#tieneBrevete').show();
             } else {
-                $('#ClaseBrevete').val(0);
+                $('#ClaseBrevete').val('Clase A');
                 $('#NroLicenciaBrevete').val(null);
                 $('#tieneBrevete').hide();
             }
@@ -154,6 +180,11 @@
                 'NroCelular'           : $('#NroCelular').val(),
                 'TelefonoAdicional1'   : $('#TelefonoAdicional1').val(),
                 'TelefonoAdicional2'   : $('#TelefonoAdicional2').val(),
+                'Sexo'                 : $('#Sexo').val(),
+                'ClaseBrevete'         : $('#ClaseBrevete').val(),
+                'IndicadorTieneBrevete': $('#IndicadorTieneBrevete').is(':checked')? 1: 0,
+                'FechaNacimiento'      : $('#FechaNacimiento').val(),
+                'FechaRevalidacoinBrevete': $('#FechaRevalidacoinBrevete').val(),
                 '_token'               : '{{csrf_token()}}'
             };
             $.ajax({
@@ -164,11 +195,9 @@
                     alert('Adicionado correctamente');
                 },
                 error: function (data) {
-//                    console.log(data.responseJSON.ApellidoPaterno);
                     $.each(data.responseJSON, function (i, item) {
-                        if(i === 'ApellidoPaterno'){
-                            $('#ApellidoPaterno').parent('div').addClass('has-error');
-                        }
+                        var idRemplazar = i;
+                        $('#'+idRemplazar).parent('div').addClass('has-error');
                     });
                 }
             });
