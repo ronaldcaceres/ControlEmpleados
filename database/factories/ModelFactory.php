@@ -52,7 +52,7 @@ $factory->define(App\TrabajadorPortuario::class, function(Faker\Generator $faker
 		'Sexo'				=> $faker->randomElement(['Femenido','Masculino']),
 		'TipoRegimenPensionar'=> $faker->randomNumber(3),
 		'IndicadorTieneBrevete'=> $faker->randomElement([0,1]),
-		'Activo'			=> $faker->randomElement([0,1]),
+		'Activo'			=> 1,
 		'UsuarioCreacion'	=> 1,
 		'UsuarioActualizacion' => 1,
 		'FechaCreacion'		=> date('Y-m-d H:m:s'),
