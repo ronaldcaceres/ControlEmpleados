@@ -43,7 +43,16 @@
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="gestion_trabajadores">
-                        <a href="{{url('portuario/create')}}" type="button" class="btn btn-default btn-sm" id="nuevo"><span class="fa fa-plus"></span> Nuevo</a>
+                        <div class="btn-group">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="fa fa-plus"></span> Nuevo
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{url('portuario/create')}}">Trabajador</a></li>
+                                <li><a href="#">Domicilio</a></li>
+                            </ul>
+                        </div>
+                        {{--<a href="{{url('portuario/create')}}" type="button" class="btn btn-default btn-sm" id="nuevo"><span class="fa fa-plus"></span> Nuevo</a>--}}
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-edit"></span> Editar</button>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-flag"></span> Disponivilidad</button>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-thumbs-down"></span> Sancionar</button>
