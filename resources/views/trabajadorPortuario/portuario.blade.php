@@ -52,26 +52,28 @@
                         <hr>
                         <table class="table table-striped" id="tablaPortuario">
                             <thead>
-                            <th>Código</th>
-                            <th>Nombre</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
-                            <th>Tax</th>
-                            <th>Clase de Brevete</th>
-                            <th>Fecha de Nacimiento</th>
-                            </thead>
-                            <tbody>
-                            @foreach($portuarios as $portuario)
                                 <tr>
-                                    <td>{{$portuario->CodTrabajadorPortuario}}</td>
-                                    <td>{{$portuario->Nombre}}</td>
-                                    <td>{{$portuario->ApellidoPaterno}}</td>
-                                    <td>{{$portuario->ApellidoMaterno}}</td>
-                                    <td>{{$portuario->Tax}}</td>
-                                    <td>{{$portuario->ClaseBrevete}}</td>
-                                    <td>{{$portuario->FechaNacimiento}}</td>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                    <th>Tax</th>
+                                    <th>Clase de Brevete</th>
+                                    <th>Fecha de Nacimiento</th>
                                 </tr>
-                            @endforeach
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
                             </tbody>
                         </table>
                     </div>
@@ -90,7 +92,31 @@
 <script src="{{asset('js/dataTables.bootstrap.js')}}"></script>
 <script>
     $(document).ready(function () {
-       $('#tablaPortuario').DataTable();
+       var tabla = $('#tablaPortuario').DataTable({
+           processing: true,
+           serverSide: true,
+           ajax: '{{route("portuario.getP")}}',
+           columns: [
+               {data: 'CodTrabajadorPortuario'},
+               {data: 'Nombre'},
+               {data: 'ApellidoPaterno'},
+               {data: 'ApellidoMaterno'},
+               {data: 'Tax'},
+               {data: 'ClaseBrevete'},
+               {data: 'FechaNacimiento'}
+               ],
+           initComplete: function () {
+               this.api().columns().every(function () {
+                   var column = this;
+                   var input = document.createElement("input");
+                   $(input).appendTo($(column.footer()).empty())
+                       .on('keyup change', function () {
+                           var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                           column.search(val ? val : '', true, false).draw();
+                       });
+               });
+           }
+       });
     });
 </script>
 @endsection

@@ -6,9 +6,15 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\trabajadorPortuario;
 use Illuminate\Support\Facades\Auth;
+use Yajra\Datatables\Facades\Datatables;
 
 class TrabajadorPortuarioController extends Controller
 {
+    public function getPortuarios()
+    {
+        $portuarios = trabajadorPortuario::select();
+        return Datatables::of($portuarios)->make(true);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -15,6 +15,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'],function () {
     Route::resource('portuario', 'TrabajadorPortuarioController');
+    Route::get('trabajador/portuarios', 'TrabajadorPortuarioController@getPortuarios')->name('portuario.getP');
     Route::get('home',function(){
 		return redirect('portuario');
     });
