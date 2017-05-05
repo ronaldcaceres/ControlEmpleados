@@ -39,7 +39,7 @@
                         <div class="form-group">
                                 {{Form::label('FechaNacimiento', 'Fecha de nacimiento:',['class' => 'control-label col-md-4'])}}
                                 <div class="col-md-8">
-                                    {{Form::text('FechaNacimiento',\Carbon\Carbon::now(),['class' => 'form-control pull-rigth'])}}
+                                    {{Form::date('FechaNacimiento',\Carbon\Carbon::now(),['class' => 'form-control pull-rigth'])}}
                                 </div>
                             </div>
                         <div class="form-group">
