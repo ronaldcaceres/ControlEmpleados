@@ -92,7 +92,7 @@
 <script src="{{asset('js/dataTables.bootstrap.js')}}"></script>
 <script>
     $(document).ready(function () {
-       var tabla = $('#tablaPortuario').DataTable({
+        var tabla = $('#tablaPortuario').DataTable({
            processing: true,
            serverSide: true,
            ajax: '{{route("portuario.getP")}}',
@@ -117,6 +117,16 @@
                });
            }
        });
+
+        $('#tablaPortuario tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('bg-gray-active') ) {
+                $(this).removeClass('bg-gray-active');
+            }
+            else {
+                tabla.$('tr.bg-gray-active').removeClass('bg-gray-active');
+                $(this).addClass('bg-gray-active');
+            }
+        } );
     });
 </script>
 @endsection
