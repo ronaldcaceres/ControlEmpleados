@@ -38,26 +38,48 @@ class TrabajadorPortuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'ApellidoPaterno'	        =>	'required',
-            'ApellidoMaterno'	        =>	'required',
-            'Nombre'			        =>	'required',
-            'Tax'				        =>	'required',
-            'ClaseBrevete'		        =>  '',
-            'EstadoCivil'		        =>	'',
-            'FechaNacimiento'	        =>	'required',
-            'FechaRevalidacionBrevete'	=>	'',
-            'NroCelular'		        =>  'required',
-            'TipoDocIdentidad'	        =>  '',
-            'NroDocIdentidad'	        =>  'required',
-            'NroLicenciaBrevete'        =>  '',
-            'TelefonoAdicional1'        =>  '',
-            'TelefonoAdicional2'        =>  '',
-            'Sexo'				        =>  '',
-            'TipoRegimenPensionar'      =>  'required',
-            'IndicadorTieneBrevete'     =>  '',
-        ]);
-
+        if($request->IndicadorTieneBrevete){
+            $this->validate($request, [
+                'ApellidoPaterno'           =>  'required',
+                'ApellidoMaterno'           =>  'required',
+                'Nombre'                    =>  'required',
+                'Tax'                       =>  'required',
+                'ClaseBrevete'              =>  '',
+                'EstadoCivil'               =>  '',
+                'FechaNacimiento'           =>  'required',
+                'FechaRevalidacionBrevete'  =>  'required',
+                'NroCelular'                =>  'required',
+                'TipoDocIdentidad'          =>  '',
+                'NroDocIdentidad'           =>  'required',
+                'NroLicenciaBrevete'        =>  'required',
+                'TelefonoAdicional1'        =>  '',
+                'TelefonoAdicional2'        =>  '',
+                'Sexo'                      =>  '',
+                'TipoRegimenPensionar'      =>  'required',
+                'IndicadorTieneBrevete'     =>  '',
+            ]);
+        } else {
+            $this->validate($request, [
+                'ApellidoPaterno'           =>  'required',
+                'ApellidoMaterno'           =>  'required',
+                'Nombre'                    =>  'required',
+                'Tax'                       =>  'required',
+                'ClaseBrevete'              =>  '',
+                'EstadoCivil'               =>  '',
+                'FechaNacimiento'           =>  'required',
+                'FechaRevalidacionBrevete'  =>  '',
+                'NroCelular'                =>  'required',
+                'TipoDocIdentidad'          =>  '',
+                'NroDocIdentidad'           =>  'required',
+                'NroLicenciaBrevete'        =>  '',
+                'TelefonoAdicional1'        =>  '',
+                'TelefonoAdicional2'        =>  '',
+                'Sexo'                      =>  '',
+                'TipoRegimenPensionar'      =>  'required',
+                'IndicadorTieneBrevete'     =>  '',
+            ]);
+        }
+        
         $portuario = new TrabajadorPortuario();
         $portuario->ApellidoPaterno = $request->ApellidoPaterno;
         $portuario->ApellidoMaterno = $request->ApellidoMaterno;
@@ -69,16 +91,16 @@ class TrabajadorPortuarioController extends Controller
         $portuario->TelefonoAdicional1 = $request->TelefonoAdicional1;
         $portuario->TelefonoAdicional2 = $request->TelefonoAdicional2;
         $portuario->Sexo = $request->Sexo;
-        $portuario->FechaNacimiento = new Carbon($request->FechaNacimiento);
-        $portuario->FechaRevalidacionBrevete = new Carbon($request->FechaRevalidacionBrevete);
+        $portuario->FechaNacimiento = (new Carbon($request->FechaNacimiento))->toDateTimeString();
         $portuario->IndicadorTieneBrevete = $request->IndicadorTieneBrevete;
         $portuario->TipoDocIdentidad = $request->TipoDocIdentidad;
         $portuario->NroDocIdentidad = $request->NroDocIdentidad;
 
+
         if($portuario->IndicadorTieneBrevete){
             $portuario->ClaseBrevete = $request->ClaseBrevete;
             $portuario->NroLicenciaBrevete = $request->NroLicenciaBrevete;
-            $portuario->FechaRevalidacionBrevete = $request->FechaRevalidacionBrevete;
+            $portuario->FechaRevalidacionBrevete = (new Carbon($request->FechaRevalidacionBrevete))->toDateTimeString();
         }
         $portuario->Activo = true;
         $portuario->UsuarioCreacion = Auth::user()->id;
