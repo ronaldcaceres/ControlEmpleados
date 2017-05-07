@@ -12,9 +12,11 @@ class usuarioSeeder extends Seeder
     public function run()
     {
         $usuario = new \App\User();
-        $usuario->name = 'Administrador';
+        $usuario->name = 'Eduardo';
+        $usuario->apellido = 'Bustamante';
         $usuario->email = 'administrador@correo.web';
         $usuario->password = bcrypt('123456');
+        $usuario->perfil_id = 1;    
         $usuario->save();
     }
 }

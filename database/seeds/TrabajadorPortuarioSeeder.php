@@ -11,6 +11,6 @@ class TrabajadorPortuarioSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\TrabajadorPortuario',80)->create();
+        factory('App\TrabajadorPortuario',12)->create();
     }
 }
