@@ -11,6 +11,11 @@ class usuarioSeeder extends Seeder
      */
     public function run()
     {
+        $perfil = new \App\Perfil();
+        $perfil->nombre = 'administrador';
+        $perfil->descripcion = 'tiene acceso a todo';
+        $perfil->save();
+        
         $usuario = new \App\User();
         $usuario->name = 'Eduardo';
         $usuario->apellido = 'Bustamante';
@@ -18,5 +23,7 @@ class usuarioSeeder extends Seeder
         $usuario->password = bcrypt('123456');
         $usuario->perfil_id = 1;    
         $usuario->save();
+
+
     }
 }

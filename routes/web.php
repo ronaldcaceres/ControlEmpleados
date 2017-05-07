@@ -7,8 +7,8 @@ Route::get('/', function () {
 });
 
 Route::get('prueba',function() {
-	$algo = \App\TrabajadorPortuario::all();
-	return $algo;
+	$usuario = \App\User::first();
+    return $usuario->perfil->nombre;
 });
 
 Auth::routes();

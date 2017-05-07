@@ -52,9 +52,10 @@
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Ingrear Usuario</a></li>
                         @else
+                            <li> <a href="#">Perfil: <span>{{Auth::user()->perfil->nombre}} </span></a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <span class="fa fa-user"></span> {{ Auth::user()->name }}
+                                    <span class="fa fa-user"> </span> {{ Auth::user()->name }} {{ Auth::user()->apellido }}
                                      <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
