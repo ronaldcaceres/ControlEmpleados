@@ -50,6 +50,11 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{url('portuario/create')}}">Trabajador</a></li>
                                 <li><a href="#">Domicilio</a></li>
+                                <li><a href="#">Dependencia</a></li>
+                                <li><a href="#">Especialidad</a></li>
+                                <li><a href="#">Cuenta Bancaria</a></li>
+                                <li><a href="#">Registrar Permiso</a></li>
+                                <li><a href="#">Documentos adjuntos</a></li>
                             </ul>
                         </div>
                         {{--<a href="{{url('portuario/create')}}" type="button" class="btn btn-default btn-sm" id="nuevo"><span class="fa fa-plus"></span> Nuevo</a>--}}
@@ -128,6 +133,7 @@
        });
 
         $('#tablaPortuario tbody').on( 'click', 'tr', function () {
+          console.log(tabla.$('tr.bg-gray-active').html());
             if ( $(this).hasClass('bg-gray-active') ) {
                 $(this).removeClass('bg-gray-active');
             }
