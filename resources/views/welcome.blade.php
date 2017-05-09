@@ -2,6 +2,6 @@
 
 @section('contenido')
 <div class="content-header">
-    <h2 class="title">Bienvenido al sistema re registro</h2>
+    <h2 class="text-center">Bienvenido al sistema de registro</h2>
 </div>
 @endsection
