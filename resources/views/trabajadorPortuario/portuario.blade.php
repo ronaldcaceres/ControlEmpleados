@@ -124,10 +124,7 @@
                {data: 'CodTrabajadorPortuario'},
                {data: 'Nombre'},
                {data: 'ApellidoPaterno'},
-               {
-                   data: 'ApellidoMaterno'
-
-               },
+               {data: 'ApellidoMaterno'},
                {data: 'Tax'},
                {data: 'ClaseBrevete'},
                {
