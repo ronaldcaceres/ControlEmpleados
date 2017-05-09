@@ -64,8 +64,9 @@
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-check"></span> Aprobar Datos</button>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-times"></span> Anular Permiso</button>
                         <hr>
-                        <table class="table table-striped" id="tablaPortuario">
-                            <thead>
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="tablaPortuario">
+                                <thead>
                                 <tr>
                                     <th>Código</th>
                                     <th>Nombre</th>
@@ -73,24 +74,33 @@
                                     <th>Apellido Materno</th>
                                     <th>Tax</th>
                                     <th>Clase de Brevete</th>
-                                    <th>Fecha de Nacimiento</th>
+                                    <th>Tipo de documento</th>
+                                    <th>Nº de documento</th>
+                                    <th>Sexo</th>
+                                    <th>Indicador Tiene Brevete</th>
+                                    <th>Nº de Brevete</th>
                                 </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
                     <div role="tabpanel" class="tab-panel" id="requerimientos">
 
                     </div>
@@ -114,10 +124,39 @@
                {data: 'CodTrabajadorPortuario'},
                {data: 'Nombre'},
                {data: 'ApellidoPaterno'},
-               {data: 'ApellidoMaterno'},
+               {
+                   data: 'ApellidoMaterno'
+
+               },
                {data: 'Tax'},
                {data: 'ClaseBrevete'},
-               {data: 'FechaNacimiento'}
+               {
+                   data: 'TipoDocIdentidad',
+                   render:  function (dato) {
+                       var retorna;
+                       switch (dato) {
+                           case '0':
+                               retorna = 'DNI';
+                               break;
+                           case '1':
+                               retorna = 'Bol';
+                               break;
+                           default:
+                               retorna = 'otro';
+                               break;
+                       }
+                       return retorna;
+                   }
+               },
+               {data: 'NroDocIdentidad'},
+               {data: 'Sexo'},
+               {
+                   data: 'IndicadorTieneBrevete',
+                   render: function (dato) {
+                       return dato == 1? 'tiene': 'no tiene';
+                   }
+               },
+               {data: 'NroLicenciaBrevete'}
                ],
            initComplete: function () {
                this.api().columns().every(function () {
