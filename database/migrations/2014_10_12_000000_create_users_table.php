@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->integer('perfil_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
-
         });
     }
 

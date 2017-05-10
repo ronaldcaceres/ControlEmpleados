@@ -18,6 +18,10 @@ class CrearTablaPerfiles extends Migration
             $table->string('nombre',15);
             $table->string('descripcion');
         });
+
+        Schema::table('users', function(Blueprint $table) {
+            $table->foreign('perfil_id')->references('id')->on('perfiles');
+        });
     }
 
     /**

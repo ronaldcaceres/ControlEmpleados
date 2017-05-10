@@ -32,6 +32,7 @@ $factory->define(App\TrabajadorPortuario::class, function(Faker\Generator $faker
 		'Clase E',
 		'Clase F',
 		'Clase G',
+		'Clase H',
 		'Clase I'
 	];
 	return [
@@ -44,14 +45,14 @@ $factory->define(App\TrabajadorPortuario::class, function(Faker\Generator $faker
 		'FechaNacimiento'	=>	$faker->date(),
 		'FechaRevalidacionBrevete'	=>	$faker->date(),
 		'NroCelular'		=> $faker->randomNumber(7),
-		'TipoDocIdentidad'	=> $faker->randomNumber(1),
+		'TipoDocIdentidad'	=> $faker->randomElement([0,1,2,3]),
 		'NroDocIdentidad'	=> $faker->randomNumber(6),
 		'NroLicenciaBrevete'=> $faker->randomNumber(6),
 		'TelefonoAdicional1'=> $faker->randomNumber(6),
 		'TelefonoAdicional2'=> $faker->randomNumber(6),
 		'Sexo'				=> $faker->randomElement(['Femenido','Masculino']),
 		'TipoRegimenPensionar'=> $faker->randomNumber(3),
-		'IndicadorTieneBrevete'=> $faker->randomElement([0,1]),
+		'IndicadorTieneBrevete'=> 1,
 		'Activo'			=> 1,
 		'UsuarioCreacion'	=> 1,
 		'UsuarioActualizacion' => 1,

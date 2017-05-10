@@ -136,7 +136,13 @@
                                retorna = 'DNI';
                                break;
                            case '1':
+                               retorna = 'LM';
+                               break;
+                            case '2':
                                retorna = 'Bol';
+                               break;
+                            case '3':
+                               retorna = 'CE';
                                break;
                            default:
                                retorna = 'otro';
@@ -165,19 +171,37 @@
                            column.search(val ? val : '', true, false).draw();
                        });
                });
-           }
+           },
+           oLanguage: espanol
        });
 
-        $('#tablaPortuario tbody').on( 'click', 'tr', function () {
-          console.log(tabla.$('tr.bg-gray-active').html());
-            if ( $(this).hasClass('bg-gray-active') ) {
-                $(this).removeClass('bg-gray-active');
-            }
-            else {
-                tabla.$('tr.bg-gray-active').removeClass('bg-gray-active');
-                $(this).addClass('bg-gray-active');
-            }
-        } );
+      $('#tablaPortuario tbody').on( 'click', 'tr', function () {
+        console.log(tabla.$('tr.bg-gray-active').html());
+          if ( $(this).hasClass('bg-gray-active') ) {
+              $(this).removeClass('bg-gray-active');
+          }
+          else {
+              tabla.$('tr.bg-gray-active').removeClass('bg-gray-active');
+              $(this).addClass('bg-gray-active');
+          }
+      } );
     });
+    var espanol = {
+     "sProcessing": "Procesando...",
+     "sLengthMenu": "Mostrar _MENU_ registros",
+     "sZeroRecords": "No se encontraron resultados",
+     "sInfo": "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+     "sInfoEmpty": "No existen registros",
+     "sInfoFiltered": "(filtrado de un total de _MAX_ líneas)",
+     "sInfoPostFix": "",
+     "sSearch": "Buscar:",
+     "sUrl": "",
+        "oPaginate": {
+        "sFirst":    "Primero",
+        "sPrevious": "Anterior",
+        "sNext":     "Siguiente",
+        "sLast":     "Último"
+      }
+    }
 </script>
 @endsection
