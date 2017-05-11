@@ -49,7 +49,7 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{url('portuario/create')}}">Trabajador</a></li>
-                                <li><a href="#">Domicilio</a></li>
+                                <li><a href="#" id="nuevoDomicilio">Domicilio</a></li>
                                 <li><a href="#">Dependencia</a></li>
                                 <li><a href="#">Especialidad</a></li>
                                 <li><a href="#">Cuenta Bancaria</a></li>
@@ -58,7 +58,20 @@
                             </ul>
                         </div>
                         {{--<a href="{{url('portuario/create')}}" type="button" class="btn btn-default btn-sm" id="nuevo"><span class="fa fa-plus"></span> Nuevo</a>--}}
-                        <button type="button" class="btn btn-default btn-sm"><span class="fa fa-edit"></span> Editar</button>
+                        <div class="btn-group">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="fa fa-edit"></span> Editar
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Trabajador</a></li>
+                                <li><a href="#">Domicilio</a></li>
+                                <li><a href="#">Dependencia</a></li>
+                                <li><a href="#">Especialidad</a></li>
+                                <li><a href="#">Cuenta Bancaria</a></li>
+                                <li><a href="#">Registrar Permiso</a></li>
+                                <li><a href="#">Documentos adjuntos</a></li>
+                            </ul>
+                        </div>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-flag"></span> Disponivilidad</button>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-thumbs-down"></span> Sancionar</button>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-check"></span> Aprobar Datos</button>
@@ -176,7 +189,6 @@
        });
 
       $('#tablaPortuario tbody').on( 'click', 'tr', function () {
-        console.log(tabla.$('tr.bg-gray-active').html());
           if ( $(this).hasClass('bg-gray-active') ) {
               $(this).removeClass('bg-gray-active');
           }
@@ -185,6 +197,16 @@
               $(this).addClass('bg-gray-active');
           }
       } );
+
+      $('#nuevoDomicilio').click(function () {
+          var dato = tabla.row('.bg-gray-active').data();
+          if(dato == undefined){
+              alert('seleccione un trabajador   ');
+          }
+          else {
+
+          }
+      });
     });
     var espanol = {
      "sProcessing": "Procesando...",
