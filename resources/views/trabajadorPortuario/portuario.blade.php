@@ -7,7 +7,7 @@
 
 @section('contenido')
 <section class="content">
-	<div class="box ">
+	<div class="box box-solid">
 		<div class="box-header bg-light-blue-gradient">
 			<div class="box-title">
 				Panel de administración
@@ -43,6 +43,20 @@
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="gestion_trabajadores">
+                    <div class="btn-group">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="fa fa-eye"></span> Ver
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{url('portuario/create')}}">Trabajador</a></li>
+                                <li><a href="#" id="verDomicilio">Domicilio</a></li>
+                                <li><a href="#">Dependencia</a></li>
+                                <li><a href="#">Especialidad</a></li>
+                                <li><a href="#">Cuenta Bancaria</a></li>
+                                <li><a href="#">Registrar Permiso</a></li>
+                                <li><a href="#">Documentos adjuntos</a></li>
+                            </ul>
+                        </div>
                         <div class="btn-group">
                             <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
                                 <span class="fa fa-plus"></span> Nuevo

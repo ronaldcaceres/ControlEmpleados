@@ -7,8 +7,8 @@ Route::get('/', function () {
 });
 
 Route::get('prueba',function() {
-    $usuario = \App\User::first();
-    return $usuario->perfil->nombre;
+    $trabajador = \App\TrabajadorPortuario::first();
+    dd ($trabajador->residencia->isEmpty());
 });
 
 Auth::routes();
@@ -16,6 +16,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'],function () {
     Route::resource('portuario', 'TrabajadorPortuarioController');
     Route::get('trabajador/portuarios', 'TrabajadorPortuarioController@getPortuarios')->name('portuario.getP');
+    Route::resource('portuario.residencia','LogResidenciaController',['only' => ['index','show','store','update','destroy']]);
     Route::get('home',function(){return redirect('portuario');});
 });
 
