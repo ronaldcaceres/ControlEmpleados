@@ -8,7 +8,7 @@ class TrabajadorPortuario extends Model
 {
 	protected $table = 'TrabajadorPortuario';
 
-	protected $primaryKey = 'CodCuentaBancaria';
+	protected $primaryKey = 'CodTrabajadorPortuario';
 
 	public $timestamps = false;
 

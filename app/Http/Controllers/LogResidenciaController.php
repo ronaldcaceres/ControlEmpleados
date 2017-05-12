@@ -14,9 +14,9 @@ class LogResidenciaController extends Controller
      */
     public function index($codTrabajador)
     {
-        $residencias = TrabajadorPortuario::find($codTrabajador)->residencia;
+        $portuario = TrabajadorPortuario::find($codTrabajador);
 
-        return view()->with(compact('residencias'));
+        return view('residencia.residencia')->with(compact('portuario'));
     }
 
     /**

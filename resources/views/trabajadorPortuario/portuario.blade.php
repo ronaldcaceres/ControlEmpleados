@@ -71,7 +71,6 @@
                                 <li><a href="#">Documentos adjuntos</a></li>
                             </ul>
                         </div>
-                        {{--<a href="{{url('portuario/create')}}" type="button" class="btn btn-default btn-sm" id="nuevo"><span class="fa fa-plus"></span> Nuevo</a>--}}
                         <div class="btn-group">
                             <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
                                 <span class="fa fa-edit"></span> Editar
@@ -212,13 +211,13 @@
           }
       } );
 
-      $('#nuevoDomicilio').click(function () {
+      $('#verDomicilio').click(function () {
           var dato = tabla.row('.bg-gray-active').data();
           if(dato == undefined){
               alert('seleccione un trabajador   ');
           }
           else {
-
+              $(this).attr('href','portuario/'+dato.CodTrabajadorPortuario+'/domicilio');
           }
       });
     });
