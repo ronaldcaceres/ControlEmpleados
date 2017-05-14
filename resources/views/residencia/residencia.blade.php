@@ -55,6 +55,11 @@
 			</div>
 			@endif
 		</div>
+		<div class="box-footer">
+			<div class="text-center">
+				<a href="{{url('portuario')}}" class="btn btn-warning btn-sm"><span class="fa fa-times"></span> Cancelar</a>
+			</div>
+		</div>
 	</div>
 </section>
 @endsection
