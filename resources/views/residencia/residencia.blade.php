@@ -4,20 +4,20 @@
 <section class="content">
 	<div class="box box-solid">
 		<div class="box-header bg-light-blue-gradient">
-			<div class="box-title"> Residencias de 
+			<div class="box-title"> Residencias registrada de
 				{{ $portuario->Nombre }} {{ $portuario->ApellidoPaterno }} {{ $portuario->ApellidoMaterno }}
 			</div>
 		</div>
 		<div class="box-body">
 				@if($portuario->residencia->isEmpty())
-			<h2 class="title">
-				no tenemos registros
-			</h2>
-			<button class="btn btn-primary">
-				<span class="fa fa-plus"></span> nuevo registro
-			</button>
-				<a href="{{url('portuario')}}" class="btn btn-warning"><span class="fa fa-times"></span> Cancelar</a>
-			@else
+					<h2 class="title">
+						no tenemos registros
+					</h2>
+					<button class="btn btn-primary">
+						<span class="fa fa-plus"></span> nuevo registro
+					</button>
+						<a href="{{url('portuario')}}" class="btn btn-warning"><span class="fa fa-times"></span> Cancelar</a>
+				@else
 			<div class="table-responsive">
 				<table class="table table-striped" id="tablaResidencia">
 					<thead>
