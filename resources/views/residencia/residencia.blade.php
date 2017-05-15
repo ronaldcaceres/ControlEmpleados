@@ -13,10 +13,9 @@
 					<h2 class="title">
 						no tenemos registros
 					</h2>
-					<button class="btn btn-primary">
+					<button class="btn btn-primary btn-sm">
 						<span class="fa fa-plus"></span> nuevo registro
 					</button>
-						<a href="{{url('portuario')}}" class="btn btn-warning"><span class="fa fa-times"></span> Cancelar</a>
 				@else
 			<div class="table-responsive">
 				<table class="table table-striped" id="tablaResidencia">
