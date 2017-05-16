@@ -50,7 +50,7 @@ $factory->define(App\TrabajadorPortuario::class, function(Faker\Generator $faker
 		'NroLicenciaBrevete'=> $faker->randomNumber(6),
 		'TelefonoAdicional1'=> $faker->randomNumber(6),
 		'TelefonoAdicional2'=> $faker->randomNumber(6),
-		'Sexo'				=> $faker->randomElement(['Femenido','Masculino']),
+		'Sexo'				=> $faker->randomElement(['Femenino','Masculino']),
 		'TipoRegimenPensionar'=> $faker->randomNumber(3),
 		'IndicadorTieneBrevete'=> 1,
 		'Activo'			=> 1,

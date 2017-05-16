@@ -9,14 +9,14 @@
 			</div>
 		</div>
 		<div class="box-body">
-				@if($portuario->residencia->isEmpty())
-					<h2 class="title">
-						no tenemos registros
-					</h2>
-					<button class="btn btn-primary btn-sm">
-						<span class="fa fa-plus"></span> nuevo registro
-					</button>
-				@else
+		@if($portuario->residencia->isEmpty())
+			<h2 class="title">
+				no tenemos registros
+			</h2>
+			<button class="btn btn-primary btn-sm">
+				<span class="fa fa-plus"></span> nuevo registro
+			</button>
+		@else	
 			<div class="table-responsive">
 				<table class="table table-striped" id="tablaResidencia">
 					<thead>
@@ -29,7 +29,7 @@
 							<th>Provincia</th>
 							<th>Distrito</th>
 							<th>Comententario</th>
-							<th>opciones</th>
+							<th>Opciones</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -52,7 +52,7 @@
 					</tbody>
 				</table>
 			</div>
-			@endif
+		@endif
 		</div>
 		<div class="box-footer">
 			<div class="text-center">

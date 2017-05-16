@@ -126,7 +126,8 @@ class TrabajadorPortuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $portuario = TrabajadorPortuario::find($id);
+        return view('trabajadorPortuario.show')->with(compact('portuario'));
     }
 
     /**
