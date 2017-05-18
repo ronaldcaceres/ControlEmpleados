@@ -154,7 +154,7 @@
 
 @section('script')
 <!-- DatePicker -->
-<script src="{{asset('datepicker/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('/datepicker/bootstrap-datepicker.js')}}"></script>
 <script>
     $(document).ready(function() {
         $('#IndicadorTieneBrevete').on('change', function() {
