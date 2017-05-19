@@ -119,12 +119,15 @@
 				<div class="col-xs-12 col-sm-8">
 					<div class="box box-solid box-default">	<!-- Residencias -->
 						<div class="box-header with-border">
-							<h3 class="box-title">Residencias</h3>
+							<h4 class="box-title">Residencias</h3>
 							<div class="box-tools pull-right">
 						    	<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 						    </div>
 						</div>
 						<div class="box-body">
+						@if($portuario->residencia->isEmpty())
+							<p>No tenemos una Dirección registrada	</p>
+						@else
 							<div class="table-responsive">
 								<table class="table table-striped" id="tablaResidencia">
 									<thead>
@@ -161,13 +164,33 @@
 									</tbody>
 								</table>
 							</div>
+						@endif		
 						</div>
 						<div class="box-footer">
 							<div class="text-center">
-								<a href="{{ route('portuario.domicilio.create',$portuario->CodTrabajadorPortuario) }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> nueva residencia</a>
+								<a href="{{ route('portuario.domicilio.create',$portuario->CodTrabajadorPortuario) }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Nueva residencia</a>
 							</div>
 						</div>
 					</div>	<!-- Fin de residencias -->
+					<div class="box box-solid box-default">
+						<div class="box-header">
+							<h4 class="box-title with-border">Dependientes </h4>
+							<div class="box-tools pull-right">
+						    	<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						    </div>
+						</div>
+						<div class="box-body">
+						@if($portuario->dependientes->isEmpty())
+							<p>No tenemos dependietes registrados	</p>
+						@else
+						@endif
+						</div>
+						<div class="box-footer">
+							<div class="text-center">
+								<a href="{{ route('portuario.domicilio.create',$portuario->CodTrabajadorPortuario) }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Nuevo Dependiente</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

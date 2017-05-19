@@ -13,7 +13,11 @@ class TrabajadorPortuario extends Model
 	public $timestamps = false;
 
 	public function residencia() {
-	    return $this->hasMany(LogResidencia::class,'CodTrabajadorPortuario','CodTrabajadorPortuario');
+	    return $this->hasMany(LogResidencia::class,'CodTrabajadorPortuario', 'CodTrabajadorPortuario');
+    }
+
+    public function dependientes() { 
+    	return $this->hasMany(Dependiente::class, 'CodTrabajadorPortuario', 'CodTrabajadorPortuario');
     }
 
 }
