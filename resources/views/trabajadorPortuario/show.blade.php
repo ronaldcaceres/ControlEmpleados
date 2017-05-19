@@ -181,8 +181,28 @@
 						</div>
 						<div class="box-body">
 						@if($portuario->dependientes->isEmpty())
-							<p>No tenemos dependietes registrados	</p>
+							<p>No tenemos dependietes registrados</p>
 						@else
+							<div class="table-responsive">
+								<table class="table talbe-striped" id="tablaDependientes">
+									<thead>
+									<tr>
+										<th>Nombre completo</th>
+										<th>Tipo de dependiente</th>
+										<th>Fecha de nacimiento</th>
+									</tr>
+									</thead>
+									<tbody>
+									@foreach($portuario->dependientes as $dependiente)
+										<tr>
+											<th>{{ $dependiente->NombreCompleto }}</th>
+											<th>{{ $dependiente->TipoDependiente }}</th>
+											<th>{{ $dependiente->FechaNacimiento }}</th>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
 						@endif
 						</div>
 						<div class="box-footer">

@@ -1,5 +1,10 @@
 @extends('layouts.plantilla')
 
+@section('cabecera')
+	<link rel="stylesheet" href="{{asset('bootstrap/css/dataTables.bootstrap.css')}}">
+	<link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap-theme.css')}}">
+@endsection
+
 @section('contenido')
 <section class="content">
 	<div class="box box-solid">
