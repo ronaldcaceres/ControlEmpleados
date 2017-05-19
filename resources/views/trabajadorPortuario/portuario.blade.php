@@ -50,7 +50,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#" id="verTrabajador">Trabajador</a></li>
                                 <li><a href="#" id="verDomicilio">Domicilio</a></li>
-                                <li><a href="#">Dependencia</a></li>
+                                <li><a href="#" id="verDependiente">Dependencia</a></li>
                                 <li><a href="#">Especialidad</a></li>
                                 <li><a href="#">Cuenta Bancaria</a></li>
                                 <li><a href="#">Registrar Permiso</a></li>
@@ -230,6 +230,15 @@
               $(this).attr('href','portuario/'+dato.CodTrabajadorPortuario+'/domicilio');
           }
       });
+      $('#verDependiente').click(function () {
+          var dato = tabla.row('.bg-gray-active').data();
+          if(dato == undefined){
+              alert('seleccione un trabajador ');
+          }
+          else {
+              $(this).attr('href','portuario/'+dato.CodTrabajadorPortuario+'/dependiente');
+          }
+      })
     });
     var espanol = {
      "sProcessing": "Procesando...",
