@@ -33,7 +33,7 @@
 							<th>{{ $dependiente->NombreCompleto }}</th>
 							<th>{{ $dependiente->TipoDependiente }}</th>
 							<th>{{ $dependiente->FechaNacimiento }}</th>
-							<th>{{ Form::open(['route' => ['portuario.dependiente.destroy',$dependiente->CodTrabajadorPortuario, $dependiente->CodDependiente], 'method' => 'delete']) }}
+							<th class="text-center">{{ Form::open(['route' => ['portuario.dependiente.destroy',$dependiente->CodTrabajadorPortuario, $dependiente->CodDependiente], 'method' => 'delete']) }}
 								<button class="btn btn-danger btn-sm" type="submit"><span class="fa fa-minus"></span></button>
 								{{ Form::close() }}
 							</th>

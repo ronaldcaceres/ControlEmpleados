@@ -48,10 +48,14 @@
 							<th>{{ $residencia->Provincia }}</th>
 							<th>{{ $residencia->Distrito }}</th>
 							<th>{{ $residencia->ComentariosExtra }}</th>
-							<th>
+							<th class="btn-group-sm">
 								{{ Form::open(['route' => ['portuario.domicilio.destroy',$residencia->CodTrabajadorPortuario, $residencia->CodLogResidencia], 'method' => 'delete']) }}
 								<button class="btn btn-danger btn-sm" type="submit"><span class="fa fa-minus"></span></button>
+								<a href="{{url(route('portuario.domicilio.edit',[$residencia->CodTrabajadorPortuario,$residencia->CodLogResidencia]))}}" class="btn btn-primary btn-sm">
+									<span class="fa fa-edit"></span>
+								</a>
 								{{ Form::close() }}
+
 							</th>
 						</tr>
 					@endforeach

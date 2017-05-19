@@ -190,6 +190,7 @@
 										<th>Nombre completo</th>
 										<th>Tipo de dependiente</th>
 										<th>Fecha de nacimiento</th>
+										<th>opciones</th>
 									</tr>
 									</thead>
 									<tbody>
@@ -198,6 +199,10 @@
 											<th>{{ $dependiente->NombreCompleto }}</th>
 											<th>{{ $dependiente->TipoDependiente }}</th>
 											<th>{{ $dependiente->FechaNacimiento }}</th>
+											<th class="text-center">{{ Form::open(['route' => ['portuario.dependiente.destroy',$dependiente->CodTrabajadorPortuario, $dependiente->CodDependiente], 'method' => 'delete']) }}
+												<button class="btn btn-danger btn-sm" type="submit"><span class="fa fa-minus"></span></button>
+												{{ Form::close() }}
+											</th>
 										</tr>
 									@endforeach
 									</tbody>
