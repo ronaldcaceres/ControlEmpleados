@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Dependiente;
 use App\TrabajadorPortuario;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DependienteController extends Controller
 {
@@ -23,9 +26,10 @@ class DependienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($CodTrabajadorPortuario)
     {
-        //
+        $portuario = TrabajadorPortuario::find($CodTrabajadorPortuario);
+        return view('dependiente.crear',compact('portuario'));
     }
 
     /**
@@ -34,9 +38,25 @@ class DependienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($CodTrabajadorPortuario, Request $request)
     {
-        //
+        $this->validate($request, [
+            'NombreCompleto'        =>  'required',
+            'TipoDependiente'       =>  'required',
+            'FechaNacimiento'       =>  'required'
+        ]);
+
+        $dependiente = new Dependiente();
+        $dependiente->NombreCompleto = $request->NombreCompleto;
+        $dependiente->TipoDependiente = $request->TipoDependiente;
+        $dependiente->CodTrabajadorPortuario = $CodTrabajadorPortuario;
+        $dependiente->FechaNacimiento = (new Carbon($request->FechaNacimiento))->toDateTimeString();
+        $dependiente->UsuarioCreacion = Auth::user()->id;
+        $dependiente->FechaCreacion = Carbon::now();
+        $dependiente->UsuarioActualizacion = Auth::user()->id;
+        $dependiente->FechaActualizacion = Carbon::now();
+
+        $dependiente->save();
     }
 
     /**

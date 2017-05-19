@@ -187,7 +187,7 @@
 						</div>
 						<div class="box-footer">
 							<div class="text-center">
-								<a href="{{ route('portuario.domicilio.create',$portuario->CodTrabajadorPortuario) }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Nuevo Dependiente</a>
+								<a href="{{ route('portuario.dependiente.create',$portuario->CodTrabajadorPortuario) }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Nuevo Dependiente</a>
 							</div>
 						</div>
 					</div>
