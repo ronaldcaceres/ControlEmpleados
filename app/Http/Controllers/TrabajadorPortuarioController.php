@@ -102,7 +102,6 @@ class TrabajadorPortuarioController extends Controller
         $portuario->TipoDocIdentidad = $request->TipoDocIdentidad;
         $portuario->NroDocIdentidad = $request->NroDocIdentidad;
 
-
         if($portuario->IndicadorTieneBrevete){
             $portuario->ClaseBrevete = $request->ClaseBrevete;
             $portuario->NroLicenciaBrevete = $request->NroLicenciaBrevete;
@@ -138,7 +137,8 @@ class TrabajadorPortuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $portuario = TrabajadorPortuario::find($id);
+        return view('trabajadorPortuario.editar')->with(compact('portuario'));    
     }
 
     /**
@@ -150,8 +150,32 @@ class TrabajadorPortuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $portuario =  TrabajadorPortuario::find($id);
+        $portuario->ApellidoPaterno = $request->ApellidoPaterno;
+        $portuario->ApellidoMaterno = $request->ApellidoMaterno;
+        $portuario->Nombre = $request->Nombre;
+        $portuario->Tax = $request->Tax;
+        $portuario->EstadoCivil = $request->EstadoCivil;
+        $portuario->TipoRegimenPensionar = $request->TipoRegimenPensionar;
+        $portuario->NroCelular = $request->NroCelular;
+        $portuario->TelefonoAdicional1 = $request->TelefonoAdicional1;
+        $portuario->TelefonoAdicional2 = $request->TelefonoAdicional2;
+        $portuario->Sexo = $request->Sexo;
+        $portuario->FechaNacimiento = (new Carbon($request->FechaNacimiento))->toDateTimeString();
+        $portuario->IndicadorTieneBrevete = $request->IndicadorTieneBrevete;
+        $portuario->TipoDocIdentidad = $request->TipoDocIdentidad;
+        $portuario->NroDocIdentidad = $request->NroDocIdentidad;
+        $portuario->ClaseBrevete = $request->ClaseBrevete;
+        $portuario->NroLicenciaBrevete = $request->NroLicenciaBrevete;
+        $portuario->FechaRevalidacionBrevete = (new Carbon($request->FechaRevalidacionBrevete))->toDateTimeString();
+        $portuario->Activo = true;
+        $portuario->UsuarioCreacion = Auth::user()->id;
+        $portuario->FechaCreacion   = Carbon::now();
+        $portuario->UsuarioActualizacion = Auth::user()->id;
+        $portuario->FechaActualizacion   = Carbon::now();
+
+        $portuario->save();
+        return response()->json(['msj' => 'Datos Guardados Satisfactoriamente'], 200);    }
 
     /**
      * Remove the specified resource from storage.

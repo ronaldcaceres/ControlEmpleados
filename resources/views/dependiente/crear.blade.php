@@ -44,7 +44,7 @@
 
 @section('script')
 <script>
-    $(document).ready()
+    $(document).ready(function ()
     {
         $('#formularioPortuario').submit(function (e) {
             e.preventDefault();
@@ -59,23 +59,14 @@
                 headers: {'X-CSRF-Token': '{{csrf_token()}}'},
                 processData:false,
                 succcess:   function (resultado) {
-                    var alerta = $('#alerta');
-                    alerta.html('<p>'+resultado.msj+'</p>');
-                    alerta.addClass('alert-success');
-                    alerta.slideDown('slow',function () {
-                        setTimeout(function () {
-                            alerta.slideUp('slow',function () {
-                                alerta.removeClass('alert-success')
-                            });
-                        },3000);
-                    });
+                    alert(resultado.msj);
                 },
                 error:      function (resultado) {
 
                 }
             });
         });
-    }
+    }};
 </script>
 
 @endsection

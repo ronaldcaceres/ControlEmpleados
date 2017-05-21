@@ -72,19 +72,10 @@
                             </ul>
                         </div>
                         <div class="btn-group">
-                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <button class="btn btn-default btn-sm " type="button" id="editar">
                                 <span class="fa fa-edit"></span> Editar
                             </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Trabajador</a></li>
-                                <li><a href="#">Domicilio</a></li>
-                                <li><a href="#">Dependencia</a></li>
-                                <li><a href="#">Especialidad</a></li>
-                                <li><a href="#">Cuenta Bancaria</a></li>
-                                <li><a href="#">Registrar Permiso</a></li>
-                                <li><a href="#">Documentos adjuntos</a></li>
-                            </ul>
-                        </div>
+                                                    </div>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-flag"></span> Disponivilidad</button>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-thumbs-down"></span> Sancionar</button>
                         <button type="button" class="btn btn-default btn-sm"><span class="fa fa-check"></span> Aprobar Datos</button>
@@ -237,6 +228,15 @@
           }
           else {
               $(this).attr('href','portuario/'+dato.CodTrabajadorPortuario+'/dependiente');
+          }
+      })
+      $('#editar').click(function () {
+        var dato = tabla.row('.bg-gray-active').data();
+          if(dato == undefined){
+              alert('seleccione un trabajador ');
+          }
+          else {
+           window.location.href = 'portuario/'+dato.CodTrabajadorPortuario+'/edit'
           }
       })
     });

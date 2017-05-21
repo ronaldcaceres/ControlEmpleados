@@ -57,6 +57,8 @@ class DependienteController extends Controller
         $dependiente->FechaActualizacion = Carbon::now();
 
         $dependiente->save();
+
+        return response()->json(['msj' => 'Datos registrdos con exito'], 200);
     }
 
     /**
