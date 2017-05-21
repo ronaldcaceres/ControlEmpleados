@@ -3,7 +3,7 @@
 @section('contenido')
     <section class="content">
         <div class="box box-solid">
-            <div class="box-header bg-light-blue-gradient">
+            <div class="box-header bg-light-blue-gradient" id="titulo">
                 <div class="box-title">nuevo registro para dependientes de {{ $portuario->Nombre }} {{ $portuario->ApellidoPaterno }}
                 </div>
             </div>
@@ -48,25 +48,50 @@
     {
         $('#formularioPortuario').submit(function (e) {
             e.preventDefault();
-            var datos = new FormData(this);
+            var datos = {
+                'NombreCompleto'   : $('#NombreCompleto').val(),
+                'TipoDependiente'  : $('#TipoDependiente').val(),
+                'FechaNacimiento'  : $('#FechaNacimiento').val()
+            };
+
             var direccion =  $(this).attr('action');
             var metodo  = $(this).attr('method');
             $.ajax({
                 url: direccion,
                 type:   metodo,
                 data:   datos,
-                contentType: false,
                 headers: {'X-CSRF-Token': '{{csrf_token()}}'},
-                processData:false,
                 succcess:   function (resultado) {
                     alert(resultado.msj);
                 },
                 error:      function (resultado) {
-
+                    var mensaje = '<ul>';
+                    $.each(resultado.responseJSON, function (i, item) {
+                        var idRemplazar = i;
+                        $('#'+idRemplazar).parent('div').addClass('has-error');
+                        mensaje = mensaje+ '<li>' + item +'</li>';
+                    });
+                    mensaje = mensaje + '</ul>';
+                    alerta = $('#alerta');
+                    alerta.html(mensaje);
+                    alerta.addClass('alert-danger');
+                    alerta.slideDown('slow');
+                    $('#titulo').removeClass(' bg-light-blue-gradient');
+                    $('#titulo').addClass('bg-red-gradient');
+                    setTimeout(function () {
+                        $.each(resultado.responseJSON, function (i, item) {
+                            var idRemplazar = i;
+                            $('#'+idRemplazar).parent('div').removeClass('has-error');
+                        });
+                        $('#alerta').removeClass('alert-danger');
+                        $('#alerta').slideUp('slow');
+                        $('#titulo').removeClass('bg-red-gradient');
+                        $('#titulo').addClass('bg-light-blue-gradient');
+                    },3000);
                 }
             });
         });
-    }};
+    });
 </script>
 
 @endsection
