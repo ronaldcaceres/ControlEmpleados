@@ -215,6 +215,56 @@
 								<a href="{{ route('portuario.dependiente.create',$portuario->CodTrabajadorPortuario) }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Nuevo Dependiente</a>
 							</div>
 						</div>
+					</div><!-- Fin de dependientes -->
+					<div class="box box-solid box-default">	<!-- inicio de Cuentas Bancarias	-->
+						<div class="box-header">
+							<h4 class="box-title with-border">Cuentas Bancarias </h4>
+							<div class="box-tools pull-right">
+						    	<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+						    </div>
+						</div>
+						<div class="box-body">
+						@if($portuario->cuentas->isEmpty())
+							<p>No tenemos cuentas bancarias registrados</p>
+						@else
+							<div class="table-responsive">
+				    			<table class="table table-striped" id='tablaCuentas'>
+				    				<thead>
+				    					<tr>
+				    						<th>Banco</th>
+				    						<th>Número de cuenta</th>
+				    						<th>Tipo de cuenta</th>
+				    						<th>Moneda</th>
+				    						<th>Opciones</th>
+				    					</tr>
+				    				</thead>
+				    				<tbody>
+									@foreach($portuario->cuentas as $cuenta)
+										<tr>
+											<td>{{ $cuenta->CodBanco }}</td>
+											<td>{{ $cuenta->NroCuenta }}</td>
+											<td>{{ $cuenta->TipoCuenta }}</td>
+											<td>{{ $cuenta->Moneda }}</td>
+											<td class="btn-group-sm">
+												{{ Form::open(['route' => ['portuario.cuenta.destroy',$cuenta->CodTrabajadorPortuario, $cuenta->CodCuentaBancaria], 'method' => 'delete']) }}
+												<button class="btn btn-danger btn-sm" type="submit"><span class="fa fa-minus"></span></button>
+												<a href="{{url(route('portuario.cuenta.edit',[$cuenta->CodTrabajadorPortuario,$cuenta->CodCuentaBancaria]))}}" class="btn btn-primary btn-sm">
+													<span class="fa fa-edit"></span>
+												</a>
+												{{ Form::close() }}
+											</td>
+										</tr>
+									@endforeach
+				    				</tbody>
+				    			</table>
+				    		</div>
+						@endif
+						</div>
+						<div class="box-footer">
+							<div class="text-center">
+								<a href="{{ route('portuario.cuenta.create',$portuario->CodTrabajadorPortuario) }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> Nueva Cuenta Bancaria</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

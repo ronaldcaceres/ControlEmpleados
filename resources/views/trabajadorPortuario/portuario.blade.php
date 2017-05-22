@@ -52,7 +52,7 @@
                                 <li><a href="#" id="verDomicilio">Domicilio</a></li>
                                 <li><a href="#" id="verDependiente">Dependencia</a></li>
                                 <li><a href="#">Especialidad</a></li>
-                                <li><a href="#">Cuenta Bancaria</a></li>
+                                <li><a href="#" id="verCuenta">Cuenta Bancaria</a></li>
                                 <li><a href="#">Registrar Permiso</a></li>
                                 <li><a href="#">Documentos adjuntos</a></li>
                             </ul>
@@ -66,7 +66,7 @@
                                 <li><a href="#" id="nuevoDomicilio">Domicilio</a></li>
                                 <li><a href="#">Dependencia</a></li>
                                 <li><a href="#">Especialidad</a></li>
-                                <li><a href="#">Cuenta Bancaria</a></li>
+                                <li><a href="#" id="nuevaCuentaBancaria">Cuenta Bancaria</a></li>
                                 <li><a href="#">Registrar Permiso</a></li>
                                 <li><a href="#">Documentos adjuntos</a></li>
                             </ul>
@@ -202,10 +202,20 @@
           }
       } );
 
+      $('#nuevaCuentaBancaria').click(function() {
+        var dato = tabla.row('.bg-gray-active').data();
+          if(dato == undefined){
+              alert('seleccione un trabajador');
+          }
+          else {
+              $(this).attr('href','portuario/'+dato.CodTrabajadorPortuario+'/cuenta/create');
+          }
+      });
+
       $('#verTrabajador').click(function() {
         var dato = tabla.row('.bg-gray-active').data();
           if(dato == undefined){
-              alert('seleccione un trabajador   ');
+              alert('seleccione un trabajador');
           }
           else {
               $(this).attr('href','portuario/'+dato.CodTrabajadorPortuario);
@@ -224,7 +234,7 @@
       $('#verDependiente').click(function () {
           var dato = tabla.row('.bg-gray-active').data();
           if(dato == undefined){
-              alert('seleccione un trabajador ');
+              alert('seleccione un trabajador');
           }
           else {
               $(this).attr('href','portuario/'+dato.CodTrabajadorPortuario+'/dependiente');
@@ -233,12 +243,21 @@
       $('#editar').click(function () {
         var dato = tabla.row('.bg-gray-active').data();
           if(dato == undefined){
-              alert('seleccione un trabajador ');
+              alert('seleccione un trabajador');
           }
           else {
            window.location.href = 'portuario/'+dato.CodTrabajadorPortuario+'/edit'
           }
       })
+      $('#verCuenta').click(function() {
+        var dato = tabla.row('.bg-gray-active').data();
+          if(dato == undefined){
+              alert('seleccione un trabajador');
+          }
+          else {
+           window.location.href = 'portuario/'+dato.CodTrabajadorPortuario+'/cuenta'
+          }
+      });
     });
     var espanol = {
      "sProcessing": "Procesando...",

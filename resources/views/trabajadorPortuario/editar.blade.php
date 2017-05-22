@@ -195,7 +195,7 @@
                 data: datos,
                 success:    function(respuesta){
                     alert(respuesta.msj);
-                    window.location.href = '{{ url('portuario') }}'
+                    window.location.href = '{{ url('portuario') }}';
                 },
                 error:      function(respuesta){
 

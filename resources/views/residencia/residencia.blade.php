@@ -40,23 +40,22 @@
 					<tbody>
 					@foreach($portuario->residencia as $residencia)
 						<tr>
-							<th>{{ $residencia->ContactoNombre }}</th>
-							<th>{{ $residencia->ContactoTelefono1 }}</th>
-							<th>{{ $residencia->ContactoTelefono2 }}</th>
-							<th>{{ $residencia->CorreoElectronico }}</th>
-							<th>{{ $residencia->Departamento }}</th>
-							<th>{{ $residencia->Provincia }}</th>
-							<th>{{ $residencia->Distrito }}</th>
-							<th>{{ $residencia->ComentariosExtra }}</th>
-							<th class="btn-group-sm">
+							<td>{{ $residencia->ContactoNombre }}</td>
+							<td>{{ $residencia->ContactoTelefono1 }}</td>
+							<td>{{ $residencia->ContactoTelefono2 }}</td>
+							<td>{{ $residencia->CorreoElectronico }}</td>
+							<td>{{ $residencia->Departamento }}</td>
+							<td>{{ $residencia->Provincia }}</td>
+							<td>{{ $residencia->Distrito }}</td>
+							<td>{{ $residencia->ComentariosExtra }}</td>
+							<td class="btn-group-sm">
 								{{ Form::open(['route' => ['portuario.domicilio.destroy',$residencia->CodTrabajadorPortuario, $residencia->CodLogResidencia], 'method' => 'delete']) }}
 								<button class="btn btn-danger btn-sm" type="submit"><span class="fa fa-minus"></span></button>
 								<a href="{{url(route('portuario.domicilio.edit',[$residencia->CodTrabajadorPortuario,$residencia->CodLogResidencia]))}}" class="btn btn-primary btn-sm">
 									<span class="fa fa-edit"></span>
 								</a>
 								{{ Form::close() }}
-
-							</th>
+							</td>
 						</tr>
 					@endforeach
 					</tbody>

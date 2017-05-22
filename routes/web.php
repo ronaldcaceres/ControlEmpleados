@@ -19,5 +19,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home',function(){return redirect('portuario');});
     Route::resource('portuario.domicilio', 'LogResidenciaController', ['only' => ['index','store','update','destroy','create','edit']]);
     Route::resource('portuario.dependiente', 'DependienteController', ['only' => ['index','store','update','destroy','create','edit']]);
+    Route::resource('portuario.cuenta','CuentaBancariaController',['only' => ['index','store','update','destroy','create','edit']]);
 });
 

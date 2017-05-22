@@ -20,4 +20,7 @@ class TrabajadorPortuario extends Model
     	return $this->hasMany(Dependiente::class, 'CodTrabajadorPortuario', 'CodTrabajadorPortuario');
     }
 
+    public function cuentas() {
+    	return $this->hasmany(CuentaBancaria::class, 'CodTrabajadorPortuario', 'CodTrabajadorPortuario');
+    }
 }
