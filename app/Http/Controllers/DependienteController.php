@@ -56,7 +56,7 @@ class DependienteController extends Controller
         $dependiente->UsuarioActualizacion = Auth::user()->id;
         $dependiente->FechaActualizacion = Carbon::now();
 
-        //$dependiente->save();
+        $dependiente->save();
 
         return response()->json(['msj' => 'Datos registrdos con exito'], 200);
     }
