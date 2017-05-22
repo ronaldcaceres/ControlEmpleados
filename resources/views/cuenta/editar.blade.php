@@ -15,7 +15,7 @@
                         <div class="form-group">
                             {{ Form::label('CodBanco','Banco',['class' => 'control-label col-md-4']) }}
                             <div class="col-md-8">
-                                {{ Form::text('CodBanco',$cuenta->CodBanco,['class' => 'form-control']) }}
+                                {{ Form::select('CodBanco',['Banco union', 'Banco Solidario', 'Banco numero 1'],$cuenta->CodBanco,['class' => 'form-control']) }}
                             </div>
                         </div>
                         <div class="form-group">
@@ -27,13 +27,13 @@
                         <div class="form-group">
                             {{ Form::label('TipoCuenta', 'Tipo de cuenta', ['class' => 'control-label col-md-4']) }}
                             <div class="col-md-8">
-                                {{ Form::text('TipoCuenta', $cuenta->TipoCuenta, ['class' => 'form-control']) }}
+                                {{ Form::select('TipoCuenta', ['Cuenta bancaria', 'Cuenta corriente', 'Libretas de ahorro'], $cuenta->TipoCuenta, ['class' => 'form-control']) }}
                             </div>
                         </div>
                         <div class="form-group">
                             {{ Form::label('Moneda', 'Moneda:', ['class' => 'control-label col-md-4']) }}
                             <div class="col-md-8">
-                                {{ Form::text('Moneda', $cuenta->Moneda, ['class' => 'form-control']) }}
+                                {{ Form::select('Moneda', ['Pesos', 'Dolares', 'Euros'], $cuenta->Moneda,['class' => 'form-control']) }}
                             </div>
                         </div>
                         <div class="form-group text-center">

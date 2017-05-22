@@ -30,10 +30,10 @@
     				<tbody>
 					@foreach($portuario->cuentas as $cuenta)
 						<tr>
-							<td>{{ $cuenta->CodBanco }}</td>
+							<td>{{ $cuenta->NombreBanco}}</td>
 							<td>{{ $cuenta->NroCuenta }}</td>
-							<td>{{ $cuenta->TipoCuenta }}</td>
-							<td>{{ $cuenta->Moneda }}</td>
+							<td>{{ $cuenta->TipoDeCuenta }}</td>
+							<td>{{ $cuenta->TipoDeMoneda }}</td>
 							<td class="btn-group-sm">
 								{{ Form::open(['route' => ['portuario.cuenta.destroy',$cuenta->CodTrabajadorPortuario, $cuenta->CodCuentaBancaria], 'method' => 'delete']) }}
 								<button class="btn btn-danger btn-sm" type="submit"><span class="fa fa-minus"></span></button>
