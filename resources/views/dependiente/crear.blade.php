@@ -63,6 +63,7 @@
                 headers: {'X-CSRF-Token': '{{csrf_token()}}'},
                 succcess:   function (resultado) {
                     alert(resultado.msj);
+                    window.location.href = '{{ url('portuario') }}';
                 },
                 error:      function (resultado) {
                     var mensaje = '<ul>';

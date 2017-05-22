@@ -50,7 +50,7 @@ class DependienteController extends Controller
         $dependiente->NombreCompleto = $request->NombreCompleto;
         $dependiente->TipoDependiente = $request->TipoDependiente;
         $dependiente->CodTrabajadorPortuario = $CodTrabajadorPortuario;
-        $dependiente->FechaNacimiento = (new Carbon($request->FechaNacimiento))->toDateTimeString();
+        $dependiente->FechaNacimiento = new Carbon($request->FechaNacimiento);
         $dependiente->UsuarioCreacion = Auth::user()->id;
         $dependiente->FechaCreacion = Carbon::now();
         $dependiente->UsuarioActualizacion = Auth::user()->id;

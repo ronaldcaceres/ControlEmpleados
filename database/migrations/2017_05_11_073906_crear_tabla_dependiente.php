@@ -18,7 +18,7 @@ class CrearTablaDependiente extends Migration
             $table->integer('CodTrabajadorPortuario')->unsigned();
             $table->string('NombreCompleto');
             $table->integer('TipoDependiente');
-            $table->date('FechaNacimeinto');
+            $table->date('FechaNacimiento');
             $table->integer('UsuarioCreacion')->unsigned();
             $table->date('FechaCreacion');
             $table->integer('UsuarioActualizacion')->unsigned();
