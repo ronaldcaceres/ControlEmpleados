@@ -101,8 +101,10 @@ class DependienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($CodTrabajadorPortuario, $CodDependiente)
     {
-        //
+        $dependiente = TrabajadorPortuario::find($CodTrabajadorPortuario)->dependientes->find($CodDependiente);
+        $dependiente->delete();
+        print "<script>alert(\"archivo eliminado\");window.location='".url('portuario')."';</script>";
     }
 }

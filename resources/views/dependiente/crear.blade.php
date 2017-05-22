@@ -61,7 +61,7 @@
                 type:   metodo,
                 data:   datos,
                 headers: {'X-CSRF-Token': '{{csrf_token()}}'},
-                succcess:   function (resultado) {
+                success:   function (resultado) {
                     alert(resultado.msj);
                     window.location.href = '{{ url('portuario') }}';
                 },

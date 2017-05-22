@@ -181,7 +181,7 @@
 						</div>
 						<div class="box-body">
 						@if($portuario->dependientes->isEmpty())
-							<p>No tenemos dependietes registrados</p>
+							<h2 class="title">No tenemos registros</h2>
 						@else
 							<div class="table-responsive">
 								<table class="table talbe-striped" id="tablaDependientes">
@@ -268,7 +268,7 @@
 					</div>	<!-- fin de Cuentas Bancarias	-->
 					<div class="box box-solid box-default">	<!-- inicio de requisitos	-->
 						<div class="box-header">
-							<h4 class="box-title with-border">Cuentas Bancarias </h4>
+							<h4 class="box-title with-border">Requisitos</h4>
 							<div class="box-tools pull-right">
 								<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 							</div>
