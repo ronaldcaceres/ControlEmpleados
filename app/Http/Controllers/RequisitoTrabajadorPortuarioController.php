@@ -15,9 +15,11 @@ class RequisitoTrabajadorPortuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($CodTrabajadorPortuario)
     {
-        //
+        $portuario = TrabajadorPortuario::find($CodTrabajadorPortuario);
+
+        return view('requisito.requisito')->with(compact('portuario'));
     }
 
     /**
@@ -59,9 +61,7 @@ class RequisitoTrabajadorPortuarioController extends Controller
         $requisito->FechaActualizacion = Carbon::now();
 
         $requisito->save();
-
-
-
+        return redirect('portuario');
     }
 
     /**
@@ -104,8 +104,10 @@ class RequisitoTrabajadorPortuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($CodTrabajadorPortuario, $CodRequisitoTrabajadorPortuario)
     {
-        //
+        $requisito = TrabajadorPortuario::find($CodTrabajadorPortuario)->requisitos->find($CodRequisitoTrabajadorPortuario);
+        $requisito->delete();
+        return back();
     }
 }

@@ -2,7 +2,7 @@
 
 @section('contenido')
     <section class="content">
-        {{ Form::open(['class' => 'form-horizontal', 'route' => ['portuario.requisito.store',$portuario->CodTrabajadorPortuario], 'id' => 'formRequisito']) }}
+        {{ Form::open(['class' => 'form-horizontal', 'route' => ['portuario.requisito.update',$portuario->CodTrabajadorPortuario, ], 'id' => 'formRequisito', 'method' => 'put']) }}
         <div class="box box-solid">
             <div class="box-header bg-light-blue-gradient" id="titulo">
                 <div class="box-title">
@@ -52,7 +52,7 @@
     <script>
         $(document).ready(function () {
             $('#formRequisito').submit(function (e) {
-                alert('datos registrados');
+                alert('datos registrados    ');
             });
 
         });
