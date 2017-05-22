@@ -20,5 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('portuario.domicilio', 'LogResidenciaController', ['only' => ['index','store','update','destroy','create','edit']]);
     Route::resource('portuario.dependiente', 'DependienteController', ['only' => ['index','store','update','destroy','create','edit']]);
     Route::resource('portuario.cuenta','CuentaBancariaController',['only' => ['index','store','update','destroy','create','edit']]);
+    Route::resource('portuario.requisito','RequisitoTrabajadorPortuarioController',['only' => ['index','store','update','destroy','create','edit']]);
+    Route::resource('adjuntar', 'DocumentosAdjuntosController');
 });
 
